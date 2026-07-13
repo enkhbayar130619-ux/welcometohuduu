@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Huduu — Малчин айлын дэргэдэх гэр амралт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav-beam">
+  <div class="nav-wrap">
+    <a href="#top" class="logo">
+      <span class="logo-line1">Welcome to</span>
+      <span class="logo-line2">Huduu</span>
+    </a>
+    <nav class="nav-boards">
+      <a href="#tuhai" class="board-tag">Тухай</a>
+      <a href="#une" class="board-tag">Үнэ</a>
+      <a href="#hiij-uzeh" class="board-tag">Хийж үзэх</a>
+      <a href="#holbogdoh" class="board-tag board-tag--cta">Холбогдох</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Цэс">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <img src="images/hero-statue.jpg" alt="Чингис хааны хөшөө рүү 45км, Цонжин Болдогоос 5км" class="hero-img">
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <p class="eyebrow eyebrow--light">Улаанбаатараас 45 км · Тал нутгийн амьсгал</p>
+    <h1 class="hero-title">Хот орхиод,<br>худуу руугаа<br>нэг шөнө.</h1>
+    <p class="hero-sub">Малчин айлын дэргэд, Чингис хааны хөшөөнөөс ердөө 5 км зайд — жинхэнэ гэрт хонож, тал нутгийн амьдралыг мэдрээрэй.</p>
+    <div class="hero-ctas">
+      <a href="#holbogdoh" class="btn btn--primary">Гэр захиалах</a>
+      <a href="#une" class="btn btn--ghost">Үнийг харах</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+  </div>
+</section>
+
+<!-- ===== DISTANCE SIGNPOST STRIP ===== -->
+<section class="distance-strip">
+  <div class="distance-wrap">
+    <div class="distance-item">
+      <span class="distance-pin distance-pin--red">●</span>
+      <div>
+        <strong>45 км</strong>
+        <p>Улаанбаатар хотоос</p>
+      </div>
+    </div>
+    <div class="distance-dash"></div>
+    <div class="distance-item">
+      <span class="distance-pin distance-pin--green">●</span>
+      <div>
+        <strong>5 км</strong>
+        <p>Цонжин Болдогоос зүүн тийш</p>
+      </div>
+    </div>
+    <div class="distance-dash"></div>
+    <div class="distance-item">
+      <span class="distance-pin distance-pin--red">●</span>
+      <div>
+        <strong>800 м</strong>
+        <p>Малчин айлын дэргэдэх гэр хүртэл</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="tuhai">
+  <div class="about-wrap">
+    <div class="about-media">
+      <img src="images/ger-interior.jpg" alt="5 ханатай гэрийн дотор тал" loading="lazy">
+      <span class="media-tag">5 ханатай гэрийн дотор тал</span>
+    </div>
+    <div class="about-text">
+      <p class="eyebrow">Малчин айлын хажууд</p>
+      <h2 class="section-title">Жинхэнэ худуугийн<br>амьдрал, автомашины<br>жолоогоор л хүрэх зайд</h2>
+      <p class="body-text">Өглөө нь үнээ саах чимээгээр сэрж, оройноо од бүрхсэн тэнгэр дор гал түлж суух — Huduu бол тийм л газар. Малчин айлын дэргэд байрлах учир та жинхэнэ монгол гэрт хонож, тэдний өдөр тутмын ажилд хүсвэл оролцох боломжтой.</p>
+      <ul class="check-list">
+        <li>Хөнжил, цагаан хэрэглэл дагалдана</li>
+        <li>Нарны цахилгаантай — утасны повербанк авч ирэхийг зөвлөж байна</li>
+        <li>Сагс, воллейболын талбай дэргэд байрлана</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING SIGNPOST ===== -->
+<section class="pricing" id="une">
+  <p class="eyebrow eyebrow--center">Гэр түрээс</p>
+  <h2 class="section-title section-title--center">Хоногийн үнэ</h2>
+
+  <div class="signpost">
+    <div class="plank plank--1">
+      <span class="plank-label">5 ханатай гэр</span>
+      <span class="plank-price">80,000<small>₮ / хоног</small></span>
+    </div>
+    <div class="plank plank--2">
+      <span class="plank-label">4 ханатай гэр</span>
+      <span class="plank-price">60,000<small>₮ / хоног</small></span>
+    </div>
+    <div class="plank plank--3">
+      <span class="plank-label">Өдрөөр ирвэл</span>
+      <span class="plank-price">50,000<small>₮ / өдөр</small></span>
+    </div>
+  </div>
+  <p class="pricing-note">Хөнжил, цагаан хэрэглэлтэйгээ ирнэ · Нараар ажилладаг гэрэлтэй тул утасны повербанкаа бэлдэж ирээрэй</p>
+</section>
+
+<!-- ===== ACTIVITIES ===== -->
+<section class="activities" id="hiij-uzeh">
+  <p class="eyebrow eyebrow--center">Хийж үзэх зүйлс</p>
+  <h2 class="section-title section-title--center">Цагийг тал нутагт<br>өнгөрөөх арга замууд</h2>
+
+  <div class="activity-grid">
+    <article class="activity-card activity-card--tall">
+      <img src="images/milking-cow.jpg" alt="Үнээ саах" loading="lazy">
+      <div class="activity-caption">
+        <h3>Үнээ саагаад үзээрэй</h3>
+        <p>Малчин айлын хүүхдүүдтэй хамт үнээ саах, тугал маллах — хотын хүүхдүүдэд шинэ дурсамж.</p>
+      </div>
+    </article>
+    <article class="activity-card">
+      <img src="images/sports-field.jpg" alt="Сагс, воллейболын талбай" loading="lazy">
+      <div class="activity-caption">
+        <h3>Сагс, воллейбол</h3>
+        <p>Уулс хараа хараандаа, цэлмэг тэнгэрийн дор гэр бүлээрээ, найзуудтайгаа тоглоорой.</p>
+      </div>
+    </article>
+    <article class="activity-card">
+      <img src="images/urum-bread.jpg" alt="Аргил, өрөм" loading="lazy">
+      <div class="activity-caption">
+        <h3>Шинэхэн өрөм, ааруул</h3>
+        <p>Өглөөний цайгаа малчин айлын шинэхэн өрөм, цагаан идээгээр амталж үзээрэй.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== PANORAMA ===== -->
+<section class="panorama">
+  <img src="images/camp-panorama.jpg" alt="Гэрийн бааз, тал нутгийн үзэсгэлэн" loading="lazy">
+  <div class="panorama-overlay">
+    <p class="panorama-text">Оддын дор нойрсох,<br>цорын ганц газар.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="holbogdoh">
+  <div class="contact-wrap">
+    <p class="eyebrow eyebrow--light">Захиалга өгөх</p>
+    <h2 class="section-title section-title--light">Дараагийн амралтаа<br>худуугаас эхлүүлээрэй</h2>
+    <p class="contact-address">Хаяг: Улаанбаатар хотоос 45 км, Цонжин Болдогоос зүүн тийш 5 км</p>
+    <div class="contact-phones">
+      <a href="tel:88064946" class="phone-plank">
+        <span class="phone-icon">☎</span> 8806 4946
+      </a>
+      <a href="tel:99294901" class="phone-plank">
+        <span class="phone-icon">☎</span> 9929 4901
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-wrap">
+    <div class="footer-logo">
+      <span class="logo-line1">Welcome to</span>
+      <span class="logo-line2">Huduu</span>
+    </div>
+    <p>Малчин айлын дэргэдэх гэр амралт · Тэрэлж чиглэлийн зам, Чингис хааны хөшөөний хажууд</p>
+    <p class="footer-copy">© 2026 Welcome to Huduu. Бүх эрх хуулиар хамгаалагдсан.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('burger').addEventListener('click', function(){
+    document.querySelector('.nav-boards').classList.toggle('nav-boards--open');
+    this.classList.toggle('burger--open');
+  });
+  document.querySelectorAll('.nav-boards a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      document.querySelector('.nav-boards').classList.remove('nav-boards--open');
+      document.getElementById('burger').classList.remove('burger--open');
+    });
+  });
+</script>
+</body>
+</html>
