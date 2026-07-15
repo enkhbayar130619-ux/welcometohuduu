@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Huduu — Малчин айлын дэргэдэх гэр амралт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-sky:    #2F5D7C;
+    --color-grass:  #55742E;
+    --color-grass-dark: #354B1D;
+    --color-gold:   #D4A62B;
+    --color-orange: #E8622C;
+    --color-cream:  #FBF7EC;
+    --color-ink:    #23281F;
+    --radius: 8px;
+    --container: 1140px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--color-ink);
+    background:var(--color-cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:700; line-height:1.12; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  .container{ max-width:var(--container); margin:0 auto; padding:0 32px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:3px solid var(--color-gold); outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 0;
+    transition: background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  .nav.scrolled{
+    background:rgba(251,247,236,0.94);
+    backdrop-filter: blur(6px);
+    padding:12px 0;
+    box-shadow:0 1px 0 rgba(35,40,31,0.1);
+  }
+  .nav .container{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; flex-direction:column; line-height:1; }
+  .brand .l1{ font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:0.95rem; color:var(--color-orange); }
+  .brand .l2{ font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem; color:var(--color-cream); transition:color .35s ease; }
+  .nav.scrolled .brand .l2{ color:var(--color-grass-dark); }
+  .nav-links{ display:flex; gap:30px; list-style:none; }
+  .nav-links a{ font-size:0.9rem; font-weight:700; color:var(--color-cream); opacity:0.92; transition:color .35s ease; }
+  .nav.scrolled .nav-links a{ color:var(--color-ink); }
+  .nav-links a:hover{ text-decoration:underline; text-underline-offset:4px; }
+  @media (max-width:760px){ .nav-links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:flex-end;
+    background: linear-gradient(180deg, rgba(20,26,16,0.15) 0%, rgba(20,26,16,0.65) 78%, rgba(20,26,16,0.85) 100%),
+                url('landscape-gers.jpg') center 60% / cover no-repeat;
+  }
+  .hero-content{ position:relative; z-index:2; color:var(--color-cream); padding:60px 0 90px; max-width:680px; }
+  .eyebrow{ font-size:0.85rem; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-gold); margin-bottom:16px; display:block; }
+  .hero h1{ font-size:clamp(2.2rem, 5vw, 3.6rem); margin-bottom:18px; }
+  .hero h1 em{ font-style:italic; color:var(--color-gold); }
+  .hero p{ font-size:1.08rem; color:rgba(251,247,236,0.9); max-width:520px; margin-bottom:32px; }
+  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{ display:inline-block; padding:14px 28px; border-radius:var(--radius); font-weight:800; font-size:0.95rem;
+        transition: transform .2s ease, box-shadow .2s ease; border:2px solid transparent; cursor:pointer; }
+  .btn-primary{ background:var(--color-gold); color:var(--color-ink); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(212,166,43,0.4); }
+  .btn-ghost{ background:transparent; border-color:rgba(251,247,236,0.55); color:var(--color-cream); }
+  .btn-ghost:hover{ border-color:var(--color-cream); }
+
+  /* ---------- SECTION HELPERS ---------- */
+  section{ padding:100px 0; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .eyebrow-dark{ font-size:0.78rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-grass); margin-bottom:14px; display:block; }
+  .section-head h2{ font-size:clamp(1.7rem, 3.2vw, 2.4rem); }
+  .section-head p{ margin-top:16px; color:#4A4F42; font-size:1.03rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .about-art{ border-radius:var(--radius); overflow:hidden; aspect-ratio:4/5; }
+  .about-art img{ width:100%; height:100%; object-fit:cover; }
+  .about-text p{ color:#3B4034; margin-bottom:16px; }
+  .stat-row{ display:flex; gap:36px; margin-top:28px; flex-wrap:wrap; }
+  .stat b{ font-family:'Fraunces', serif; font-size:1.9rem; display:block; color:var(--color-sky); }
+  .stat span{ font-size:0.82rem; color:#5A5F50; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- LOCATION ---------- */
+  .location{ background:var(--color-grass-dark); color:var(--color-cream); }
+  .location .eyebrow-dark{ color:var(--color-gold); }
+  .location .section-head p{ color:rgba(251,247,236,0.8); }
+  .loc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(251,247,236,0.15); border:1px solid rgba(251,247,236,0.15); }
+  .loc-card{ background:var(--color-grass-dark); padding:34px 28px; }
+  .loc-card b{ font-family:'Fraunces', serif; font-size:1.6rem; color:var(--color-gold); display:block; margin-bottom:8px; }
+  .loc-card span{ font-size:0.92rem; color:rgba(251,247,236,0.85); }
+  @media (max-width:760px){ .loc-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- PRICING ---------- */
+  .pricing{ background:var(--color-cream); }
+  .price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .price-card{ background:#fff; border:1px solid rgba(35,40,31,0.1); border-radius:var(--radius); padding:36px 28px; text-align:center; position:relative; }
+  .price-card.featured{ border-color:var(--color-gold); box-shadow:0 12px 30px rgba(212,166,43,0.18); }
+  .price-card .tag{ font-size:0.78rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-grass); }
+  .price-card .amount{ font-family:'Fraunces', serif; font-size:2.2rem; font-weight:700; margin:14px 0 6px; color:var(--color-ink); }
+  .price-card .unit{ font-size:0.85rem; color:#6B7060; margin-bottom:20px; display:block; }
+  .price-note{ margin-top:36px; background:#fff; border-left:3px solid var(--color-gold); border-radius:var(--radius); padding:22px 26px; font-size:0.94rem; color:#3B4034; }
+  .price-note ul{ margin-top:8px; padding-left:20px; }
+  @media (max-width:860px){ .price-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- EXPERIENCE / GALLERY ---------- */
+  .experience{ background:#fff; }
+  .exp-grid{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:220px; gap:12px; }
+  .exp-grid figure{ position:relative; border-radius:var(--radius); overflow:hidden; }
+  .exp-grid img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+  .exp-grid figure:hover img{ transform:scale(1.05); }
+  .exp-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:16px; font-size:0.85rem; font-weight:700; color:var(--color-cream);
+    background:linear-gradient(180deg, rgba(20,26,16,0) 0%, rgba(20,26,16,0.75) 100%);
+  }
+  .exp-grid figure:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  @media (max-width:860px){
+    .exp-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:180px; }
+    .exp-grid figure:nth-child(1){ grid-column:span 2; grid-row:span 1; }
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ background:var(--color-cream); }
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .testi-card{ background:#fff; padding:30px; border-radius:var(--radius); border-left:3px solid var(--color-orange); }
+  .testi-card p{ font-size:0.96rem; margin-bottom:18px; color:#3B4034; }
+  .testi-name{ font-weight:800; font-size:0.9rem; }
+  .testi-role{ font-size:0.8rem; color:#6B7060; }
+  @media (max-width:860px){ .testi-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:#fff; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  .contact-info dl{ margin-top:24px; }
+  .contact-info dt{ font-size:0.76rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-grass); font-weight:800; margin-top:18px; }
+  .contact-info dd{ font-size:1.05rem; margin-top:4px; }
+  .phone-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+  .phone-pill{ background:var(--color-cream); border:1px solid rgba(35,40,31,0.12); border-radius:999px; padding:8px 18px; font-weight:700; font-size:0.95rem; }
+  form{ display:flex; flex-direction:column; gap:16px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  label{ font-size:0.82rem; font-weight:800; margin-bottom:6px; display:block; }
+  input, textarea{ width:100%; padding:13px 14px; border-radius:var(--radius); border:1px solid rgba(35,40,31,0.2); background:var(--color-cream); font-family:'Manrope', sans-serif; font-size:0.95rem; }
+  textarea{ resize:vertical; min-height:100px; }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } .field-row{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--color-grass-dark); color:rgba(251,247,236,0.75); padding:56px 0 28px; }
+  .footer-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:28px; padding-bottom:32px; border-bottom:1px solid rgba(251,247,236,0.14); }
+  .footer-brand{ font-family:'Fraunces', serif; color:var(--color-cream); font-size:1.25rem; margin-bottom:8px; }
+  .footer-links{ display:flex; gap:44px; flex-wrap:wrap; }
+  .footer-links h4{ font-size:0.76rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold); margin-bottom:12px; }
+  .footer-links ul{ list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9rem; }
+  .footer-bottom{ display:flex; justify-content:space-between; padding-top:22px; font-size:0.82rem; flex-wrap:wrap; gap:12px; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <a class="brand" href="#top">
+      <span class="l1">Welcome to</span>
+      <span class="l2">Huduu</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Бидний тухай</a></li>
+      <li><a href="#location">Байршил</a></li>
+      <li><a href="#pricing">Үнэ</a></li>
+      <li><a href="#experience">Зургийн сан</a></li>
+      <li><a href="#contact">Холбоо барих</a></li>
+      <li><a href="https://m.me/auuhajz" target="_blank" rel="noopener" style="color:var(--color-gold);">Messenger</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container hero-content">
+    <span class="eyebrow">Малчин айлын дэргэдэх гэр амралт</span>
+    <h1>Тавтай морил <em>хөдөө рүү</em></h1>
+    <p>Улаанбаатар хотоос ердөө 45 км, Чингис хааны хөшөөнөөс 5 км зайд оршдог малчин айлын дэргэдэх гэр амралт. Жинхэнэ нүүдэлчин ахуй, цэвэр агаар, тайван орчинг танд бэлдлээ.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-primary">Захиалга өгөх</a>
+      <a href="https://m.me/auuhajz" target="_blank" rel="noopener" class="btn btn-ghost">💬 Messenger-ээр бичих</a>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-art">
+      <img src="ger-interior.jpg" alt="5 ханатай гэрийн дотоод тохижилт" loading="lazy">
+    </div>
+    <div class="about-text">
+      <span class="eyebrow-dark">Бидний тухай</span>
+      <h2>Малчин айлын дэргэд, жинхэнэ хөдөөгийн амьдралыг мэдрэх газар</h2>
+      <p><strong>Welcome to Huduu</strong> нь Төв аймагт, малчин айлын дэргэд байрладаг гэр амралт. Хотын шуугиан, машин, интернетээс түр зайдуу, тал нутгийн цэвэр агаар, өргөн уудам ногоон нуга дунд амрах боломжийг олгодог.</p>
+      <p>Манай зочид малын саалт хийх, гэрийн цагаан идээ амсах, сагс волейболын талбайд тоглох зэргээр цагийг өнгөрүүлдэг. 5 болон 4 ханатай уламжлалт гэрүүд нь унтлагын орон, ширээ сандал, зуухтай бүрэн тохижсон.</p>
+      <div class="stat-row">
+        <div class="stat"><b>45км</b><span>Улаанбаатар хотоос</span></div>
+        <div class="stat"><b>800м</b><span>Малчин айлаас</span></div>
+        <div class="stat"><b>2</b><span>Төрлийн гэр (5 & 4 хана)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-dark">Байршил</span>
+      <h2>Олоход хялбар, ойрхон</h2>
+      <p>Улаанбаатараас Чингис хааны хөшөө (Цонжин Болдог) тийш чиглэн, тэндээс зүүн тийш дөхөж очно.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <b>45 км</b>
+        <span>Улаанбаатар хотоос — Чингис хааны хөшөө (Цонжин Болдог) чиглэлээр</span>
+      </div>
+      <div class="loc-card">
+        <b>5 км</b>
+        <span>Цонжин Болдогоос зүүн тийш</span>
+      </div>
+      <div class="loc-card">
+        <b>800 м</b>
+        <span>Малчин айлын дэргэдэх гэр амралт хүртэл</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-dark">Гэрийн үнэ</span>
+      <h2>Гэр түрээсийн тариф</h2>
+      <p>Улирлын шинэ өрөө, тав тухтай гэрүүд. Захиалгаа урьдчилан өгснөөр байраа баталгаажуулна.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card featured">
+        <span class="tag">Хамгийн тохилог</span>
+        <div class="amount">80,000₮</div>
+        <span class="unit">5 ханатай гэр / хоног</span>
+      </div>
+      <div class="price-card">
+        <span class="tag">Стандарт</span>
+        <div class="amount">60,000₮</div>
+        <span class="unit">4 ханатай гэр / хоног</span>
+      </div>
+      <div class="price-card">
+        <span class="tag">Өдрийн зочид</span>
+        <div class="amount">50,000₮</div>
+        <span class="unit">Өдрөөр ирвэл</span>
+      </div>
+    </div>
+    <div class="price-note">
+      <strong>Анхаарах зүйлс:</strong>
+      <ul>
+        <li>Хөнжил, цагаан хэрэглэлээ өөрсдөө авч ирнэ үү.</li>
+        <li>Бид нарны эрчим хүчээр ажилладаг тул утасны повербанкаа авч ирэхийг зөвлөж байна.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-dark">Зургийн сан</span>
+      <h2>Энд юу хийж, юу мэдрэх вэ</h2>
+    </div>
+    <div class="exp-grid">
+      <figure>
+        <img src="landscape-gers.jpg" alt="Тал нутагт байрлах гэрийн бааз, наран жаргалт" loading="lazy">
+        <figcaption>Тал нутгийн үзэсгэлэнт орчин</figcaption>
+      </figure>
+      <figure>
+        <img src="milking-cow.jpg" alt="Малын саалт хийж буй зочид" loading="lazy">
+        <figcaption>Малын саалт хийх туршлага</figcaption>
+      </figure>
+      <figure>
+        <img src="sports-court.jpg" alt="Сагс, волейболын талбай" loading="lazy">
+        <figcaption>Сагс, волейболын талбай</figcaption>
+      </figure>
+      <figure>
+        <img src="urum-food.jpg" alt="Гэрийн цагаан идээ, өрөм" loading="lazy">
+        <figcaption>Гэрийн цагаан идээ</figcaption>
+      </figure>
+      <figure>
+        <img src="ger-interior.jpg" alt="5 ханатай гэрийн дотоод" loading="lazy">
+        <figcaption>5 ханатай гэрийн тохижилт</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-dark">Зочдын сэтгэгдэл</span>
+      <h2>Манай зочид юу гэж хэлдэг вэ</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"Хүүхдүүдтэйгээ малын саалт хийж үзсэн нь маш сонирхолтой байлаа. Ойрхон ч гэсэн бүрэн өөр орчинд амарсан юм шиг санагдсан."</p>
+        <div class="testi-name">Б. Оюунчимэг</div>
+        <div class="testi-role">Улаанбаатар</div>
+      </div>
+      <div class="testi-card">
+        <p>"5 ханатай гэр маш өргөн, тохилог байсан. Найзуудтайгаа сагс, волейбол тоглож сайхан цаг өнгөрүүллээ."</p>
+        <div class="testi-name">Т. Ганбаатар</div>
+        <div class="testi-role">Найзуудын хамт</div>
+      </div>
+      <div class="testi-card">
+        <p>"Малчин айлын хажууд байрлах нь их таалагдсан. Гэрийн цагаан идээ жинхэнэ амттай байсан."</p>
+        <div class="testi-name">С. Наранцэцэг</div>
+        <div class="testi-role">Дархан</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow-dark">Холбоо барих</span>
+      <h2>Захиалга өгөх, асуулт байвал холбогдоорой</h2>
+      <dl>
+        <dt>Байршил</dt>
+        <dd>Малчин айлын дэргэд, УБ хотоос 45 км, Цонжин Болдогоос зүүн тийш 5 км</dd>
+        <dt>Утас</dt>
+        <dd>
+          <div class="phone-row">
+            <span class="phone-pill">88064946</span>
+            <span class="phone-pill">99294901</span>
+          </div>
+        </dd>
+        <dt>Messenger</dt>
+        <dd><a href="https://m.me/auuhajz" target="_blank" rel="noopener" style="font-weight:800; color:var(--color-sky);">facebook.com/auuhajz →</a></dd>
+        <dt>Анхаарах зүйл</dt>
+        <dd>Нарны эрчим хүчээр ажилладаг тул повербанктай ирнэ үү</dd>
+      </dl>
+    </div>
+    <form id="bookingForm">
+      <div class="field-row">
+        <div>
+          <label for="name">Нэр</label>
+          <input id="name" name="name" type="text" placeholder="Таны нэр" required>
+        </div>
+        <div>
+          <label for="phone">Утасны дугаар</label>
+          <input id="phone" name="phone" type="tel" placeholder="99112233" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div>
+          <label for="date">Ирэх огноо</label>
+          <input id="date" name="date" type="date">
+        </div>
+        <div>
+          <label for="gerType">Гэрийн төрөл</label>
+          <select id="gerType" name="gerType" style="width:100%; padding:13px 14px; border-radius:8px; border:1px solid rgba(35,40,31,0.2); background:var(--color-cream); font-family:'Manrope',sans-serif; font-size:0.95rem;">
+            <option value="5-wall">5 ханатай гэр — 80,000₮</option>
+            <option value="4-wall">4 ханатай гэр — 60,000₮</option>
+            <option value="day">Өдрөөр — 50,000₮</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="message">Нэмэлт мэдээлэл</label>
+        <textarea id="message" name="message" placeholder="Хүсэлт, асуулт бичих"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="align-self:flex-start;">💬 Messenger-ээр илгээх</button>
+    </form>
+
+    <!-- Paste instruction overlay -->
+    <div id="pasteOverlay" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(27,33,30,0.75); align-items:center; justify-content:center; padding:20px;">
+      <div style="background:#fff; border-radius:12px; padding:40px 32px; max-width:420px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+        <div style="font-size:3rem; margin-bottom:16px;">📋 ➜ 💬</div>
+        <h3 style="font-size:1.3rem; margin-bottom:14px; color:var(--color-ink);">Мэдээлэл хуулагдлаа!</h3>
+        <p style="font-size:1.05rem; color:#3B4034; margin-bottom:6px;">Messenger нээгдэнэ. Тэнд зурвасын мөрөн дээр дараад:</p>
+        <p style="font-size:1.6rem; font-weight:800; color:var(--color-orange); margin:18px 0; letter-spacing:0.02em;">Ctrl + V</p>
+        <p style="font-size:1.05rem; color:#3B4034; margin-bottom:24px;">дараад <strong>Илгээх</strong> товч дарна уу.</p>
+        <button id="pasteOverlayClose" class="btn btn-primary" style="width:100%;">Ойлголоо, үргэлжлүүлэх</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Welcome to Huduu</div>
+        <p style="max-width:280px; font-size:0.9rem;">Малчин айлын дэргэдэх гэр амралт — Төв аймаг, Монгол улс.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Хуудас</h4>
+          <ul>
+            <li><a href="#about">Бидний тухай</a></li>
+            <li><a href="#pricing">Үнэ</a></li>
+            <li><a href="#experience">Зургийн сан</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Холбоо барих</h4>
+          <ul>
+            <li>88064946</li>
+            <li>99294901</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Welcome to Huduu. Бүх эрх хуулиар хамгаалагдсан.</span>
+      <span>Төв аймаг, Монгол улс</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const form = document.getElementById('bookingForm');
+  const MESSENGER_USERNAME = 'auuhajz'; // facebook.com/auuhajz
+  const pasteOverlay = document.getElementById('pasteOverlay');
+  const pasteOverlayClose = document.getElementById('pasteOverlayClose');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value || 'Зочин';
+    const phone = document.getElementById('phone').value || '-';
+    const date = document.getElementById('date').value || '-';
+    const gerTypeSelect = document.getElementById('gerType');
+    const gerType = gerTypeSelect.options[gerTypeSelect.selectedIndex].text;
+    const message = document.getElementById('message').value || '-';
+
+    const summary =
+      `Сайн байна уу, захиалга хийе.\n` +
+      `Нэр: ${name}\n` +
+      `Утас: ${phone}\n` +
+      `Ирэх огноо: ${date}\n` +
+      `Гэрийн төрөл: ${gerType}\n` +
+      `Нэмэлт: ${message}`;
+
+    try {
+      await navigator.clipboard.writeText(summary);
+    } catch (err) {
+      // Clipboard failed silently — overlay instructions still guide the user.
+    }
+
+    pasteOverlay.style.display = 'flex';
+  });
+
+  pasteOverlayClose.addEventListener('click', () => {
+    pasteOverlay.style.display = 'none';
+    window.open(`https://m.me/${MESSENGER_USERNAME}`, '_blank', 'noopener');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
